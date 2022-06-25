@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid mt-2">
+        <h1 class="text-center">RSA</h1>
+        <div class="row">
+            <div class="col-sm">
+                <h6 class="text-center">Chọn 2 số nguyên tố bất kì :</h6>
+                <div class="py-1">
+                    <label>Nhập số p : </label>
+                    <input type="text" id="nump" class="form-control" placeholder="p = ?">
+                </div>
+                <div class="py-1">
+                    <label>Nhập số q : </label>
+                    <input type="text" id="numq" class="form-control" placeholder="q = ?">
+                </div>
+            </div>
+            <div class="col-sm col col-lg-9">
+                <h5 class="text-center">Tính các giá trị : </h5>
+                <div class="row">
+                    <div class="col-sm">
+                        <h6 class="text-center">Khóa công khai : </h6>
+                        <div class="py-2">
+                            <label>Số e là : </label>
+                            <input id="nume" disabled type="text" class="form-control" placeholder="e = ?">
+                        </div>
+                        <div class="py-2">
+                            <label>Số n là : </label>
+                            <input id="numen" disabled type="text" class="form-control" placeholder="n = ?">
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <h6 class="text-center">Khóa bí mật : </h6>
+                        <div class="py-2">
+                            <label>Số d là : </label>
+                            <input id="numd" disabled type="text" class="form-control" placeholder="d = ?">
+                        </div>
+                        <div class="py-2">
+                            <label>Số n là : </label>
+                            <input id="numde" disabled type="text" class="form-control" placeholder="n = ?">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button id="generateKey" class="btn btn-primary">Tạo khóa</button>
+            <button id="reset" class="btn btn-danger">Reset</button>
+        </div>
+        <div class="mt-2">
+            <h3 class="text-center">Tạo chữ kí điện tử</h3>
+            <div class="row col-8 mx-auto">
+                <div class="col-sm col-3">
+                    <h4 class="my-2 py-4">Văn bản cần ký :</h4>
+                    <h4 class="my-2 py-4">Hàm băm : </h4>
+                    <h4 class="my-2 py-4">Chữ ký : </h4>
+                </div>
+                <div class="col-sm">
+                    <textarea class="my-2 py-3" style="width: 80%" id="text"></textarea>
+                    <br>
+                    <input disabled type="text" style="width: 80%; margin-top: 10px" id="hashed">
+                    <br><br>
+                    <textarea disabled class="my-2 py-3" style="width: 80%; margin-top: 20px"
+                        id="signatureText"></textarea>
+                </div>
+            </div>
+            <div class="row col-8 mx-auto mt-3">
+                <label class="btn btn-primary mx-3" for="upload">Tải văn bản</label>
+                <input type="file" name="photo" id="upload" accept=".txt" />
+                <button class="btn btn-primary mx-3 px-4" id="signature">Ký</button>
+                <button class="btn btn-primary mx-3" id="saveSignature">Lưu chữ ký</button>
+                <button class="btn btn-danger mx-3" id="resetSignature">Reset</button>
+            </div>
+        </div>
+        <div class="mt-5">
+            <h3 class="text-center">Kiểm tra chữ kí điện tử</h3>
+            <div class="row col-8 mx-auto">
+                <div class="col-sm col-3">
+                    <h4 class="my-2 py-4">Văn bản cần xác nhận :</h4>
+                    <h4 class="my-2 py-4">Xác nhận chữ kí : </h4>
+                    <h4 class="my-2 py-4">Nhập xác nhận : </h4>
+                </div>
+                <div class="col-sm">
+                    <textarea class="my-2 py-3" style="width: 80%" id="textContentCheck"></textarea>
+                    <br>
+                    <input type="text" style="width: 80%; margin-top: 10px" id="textSignatureCheck">
+                    <br><br>
+                    <div class="mt-3 d-flex justify-content-between">
+                        <span class="font-weight-bold">e</span>
+                        <input type="text" style="width: 30%" id="enterE">
+                        <span class="font-weight-bold">n : </span>
+                        <input type="text" style="width: 30%" id="enterN">
+                    </div>
+                </div>
+            </div>
+            <div class="row col-8 mx-auto mt-3">
+                <div>
+                    <label class="btn btn-primary mx-3" for="textContentUpload">Tải văn bản</label>
+                    <input type="file" name="textSignature" id="textContentUpload" accept=".txt" />
+                    <label class="btn btn-primary mx-3" for="textSignature">Tải chữ kí</label>
+                    <input type="file" id="textSignature" name="textSignature" >
+                </div>
+                <button class="btn btn-primary mx-3" id="btnConfirm">Xác nhận</button>
+                <button class="btn btn-danger mx-3" id="resetCheckSignature">Reset</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"
+        integrity="sha512-8pbzenDolL1l5OPSsoURCx9TEdMFTaeFipASVrMYKhuYtly+k3tcsQYliOEKTmuB1t7yuzAiVo+yd7SJz+ijFQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
