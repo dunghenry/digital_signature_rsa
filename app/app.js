@@ -31,7 +31,7 @@ document.addEventListener(
 
     //Random e
     function randomE(array) {
-      return 7;
+      return array[Math.floor(Math.random() * array.length)];
     }
 
     //Check SNT
