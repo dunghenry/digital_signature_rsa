@@ -76,9 +76,10 @@
             </div>
             <div class="row col-8 mx-auto mt-3">
                 <label class="btn btn-primary mx-3" for="upload">Tải văn bản</label>
-                <input type="file" name="photo" id="upload" accept=".txt" />
+                <input type="file" name="photo" id="upload" accept=".txt, .docx, .doc" />
                 <button class="btn btn-primary mx-3 px-4" id="signature">Ký</button>
                 <button class="btn btn-primary mx-3" id="saveSignature">Lưu chữ ký</button>
+                <button class="btn btn-primary mx-3" id="move">Chuyển</button>
                 <button class="btn btn-danger mx-3" id="resetSignature">Reset</button>
             </div>
         </div>
@@ -108,7 +109,7 @@
                     <label class="btn btn-primary mx-3" for="textContentUpload">Tải văn bản</label>
                     <input type="file" name="textSignature" id="textContentUpload" accept=".txt" />
                     <label class="btn btn-primary mx-3" for="textSignature">Tải chữ kí</label>
-                    <input type="file" id="textSignature" name="textSignature" >
+                    <input type="file" id="textSignature" name="textSignature">
                 </div>
                 <button class="btn btn-primary mx-3" id="btnConfirm">Xác nhận</button>
                 <button class="btn btn-danger mx-3" id="resetCheckSignature">Reset</button>
@@ -127,6 +128,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
         integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
     <script src="./app.js"></script>
 </body>
 
